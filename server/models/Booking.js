@@ -3,8 +3,6 @@ const mongoose=require("mongoose");
 
 const BookingSchema=new mongoose.Schema({
  name:String,
- email:String,
- eventType:String,
  createdAt:{type:Date,default:Date.now}
 });
 

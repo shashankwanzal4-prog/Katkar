@@ -1,24 +1,21 @@
 
-import {useEffect,useState} from "react";
-import api from "../utils/api";
+export default function Testimonials() {
+  const testimonials = [
+    { name: "Rahul Sharma", review: "Amazing wedding arrangement!" },
+    { name: "Priya Patel", review: "Best event planners in Pune." },
+  ];
 
-export default function Testimonials(){
-
- const [data,setData]=useState([]);
-
- useEffect(()=>{
-  api.get("/testimonials").then(res=>setData(res.data));
- },[]);
-
- return(
-  <div>
-   <h2>Testimonials</h2>
-   {data.map(t=>(
-    <div key={t._id}>
-     <b>{t.name}</b>
-     <p>{t.review}</p>
-    </div>
-   ))}
-  </div>
- )
+  return (
+    <section className="py-16 text-center">
+      <h2 className="text-3xl font-bold mb-10">Client Testimonials</h2>
+      <div className="grid md:grid-cols-2 gap-8 px-10">
+        {testimonials.map((t) => (
+          <div key={t.name} className="bg-white p-6 shadow rounded-xl">
+            <p>"{t.review}"</p>
+            <h4 className="mt-4 font-semibold">{t.name}</h4>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }

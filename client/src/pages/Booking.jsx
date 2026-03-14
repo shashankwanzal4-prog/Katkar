@@ -1,33 +1,18 @@
 
 import {useState} from "react";
-import api from "../utils/api";
+import axios from "axios";
 
 export default function Booking(){
-
- const [form,setForm]=useState({});
-
+ const [name,setName]=useState("");
  const submit=async()=>{
-  await api.post("/bookings",form);
-  alert("Booking Submitted");
+   await axios.post("http://localhost:5000/api/bookings",{name});
+   alert("Booking sent");
  }
-
  return(
-  <div>
-   <h1>Book Event</h1>
-
-   <input placeholder="Name"
-   onChange={e=>setForm({...form,name:e.target.value})}/>
-
-   <input placeholder="Email"
-   onChange={e=>setForm({...form,email:e.target.value})}/>
-
-   <select onChange={e=>setForm({...form,eventType:e.target.value})}>
-    <option>Wedding</option>
-    <option>Corporate</option>
-    <option>Birthday</option>
-   </select>
-
-   <button onClick={submit}>Submit</button>
+  <div className="p-10">
+   <h1 className="text-2xl">Book Event</h1>
+   <input className="border p-2" onChange={e=>setName(e.target.value)} placeholder="Name"/>
+   <button className="bg-black text-white p-2 ml-2" onClick={submit}>Submit</button>
   </div>
  )
 }
