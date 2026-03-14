@@ -1,13 +1,12 @@
-const express = require("express")
-const mongoose = require("mongoose")
-const cors = require("cors")
+const express=require("express")
+const mongoose=require("mongoose")
+const cors=require("cors")
 
-const app = express()
+const app=express()
 
 app.use(cors())
 app.use(express.json())
 
-// MongoDB Atlas connection
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>console.log("MongoDB Connected"))
 .catch(err=>console.log(err))
@@ -16,12 +15,19 @@ app.get("/",(req,res)=>{
 res.send("Katkar Events API Running")
 })
 
-app.get("/events",(req,res)=>{
-res.json([
-{ name:"Wedding Planning", location:"Pune"},
-{ name:"Corporate Event", location:"Mumbai"},
-{ name:"Birthday Party", location:"Nagpur"}
-])
+/* CONTACT FORM API */
+app.post("/contact",(req,res)=>{
+
+const {name,email,phone,eventType,message}=req.body
+
+console.log("New Contact Request:")
+console.log(name,email,phone,eventType,message)
+
+res.json({
+success:true,
+message:"Contact form submitted successfully"
+})
+
 })
 
 const PORT = process.env.PORT || 5000
