@@ -1,12 +1,9 @@
+
 export default function Dashboard(){
-return(
-<div>
-<h2>Admin Dashboard</h2>
-<ul>
-<li>Manage Bookings</li>
-<li>Manage Gallery</li>
-<li>Manage Blogs</li>
-</ul>
-</div>
-)
+ return(
+  <div>
+   <h1>Admin Dashboard</h1>
+   <p>Manage Bookings, Gallery and Testimonials</p>
+  </div>
+ )
 }

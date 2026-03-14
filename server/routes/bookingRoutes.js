@@ -1,8 +1,7 @@
-const express=require("express")
-const router=express.Router()
 
-router.post("/",(req,res)=>{
-res.json({message:"Booking created"})
-})
+const router=require("express").Router();
+const controller=require("../controllers/bookingController");
 
-module.exports=router
+router.post("/",controller.createBooking);
+
+module.exports=router;

@@ -1,1 +1,0 @@
-grid-template-columns: repeat(auto-fit,minmax(300px,1fr))
